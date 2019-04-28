@@ -28,3 +28,15 @@
 4. Run IDE and query
    - How come `null` from the resolver throws an error, but an int is ok...?
    - Looks like the int gets cast to a string, JS related, I guess?
+5. Add feed to query typeDefs, and create a new type called link
+   - Implement the resolvers for the feed, and each field on the Link.
+   - Parent responds to the previously resolved level field, so in the Link resolvers, parent is the Link
+   - Remember that the parent in the resolvers is the Overall model itself.
+   - We aren't actually hooked up to a db yet, so `links` is hardcoded in the file for now
+   - Again, every field has a corresponding resolver function
+6. Mutations
+
+   - Refactor schema into its own file and reference it.
+   - We can remove the links resolver, because the yoga server can infer it based of the schema.
+
+7. Do the mutation resolver full CRUD exercise

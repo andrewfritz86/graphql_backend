@@ -1,22 +1,20 @@
 const { GraphQLServer } = require("graphql-yoga");
 
-// Here we define our GQL schema...
-// We define a simple type of query with a field of info, that is
-// a required string
+// placeholder constant for links in memory, no DB yet
+let links = [
+  {
+    id: "link-0",
+    url: "www.www",
+    description: "Fullstack tutorial for GQL"
+  },
+  {
+    id: "link-1",
+    url: "www.krap",
+    description: "JHello!"
+  }
+];
 
-// The schema is the heart of a gql server, required before you
-// can build out the server
-
-// Query is a `root type` along with `mutation` and `subscription`
-// Think of these root types as entry points; you can only send a gql DB/server
-// One of these three types
-
-// Schemas have a *definition* and an *implementation*
-const typeDefs = `
-    type Query {
-        info: String!
-    }
-`;
+let idCount = links.length;
 
 // Resolvers are the "actual implementation" of the schema...
 // Notice that the structure is identical to the GQL tag above
@@ -24,12 +22,42 @@ const typeDefs = `
 
 const resolvers = {
   Query: {
-    info: () => 2
+    info: () => "Hacker news clone",
+    feed: () => links,
+    link: (parent, args) => {
+      return links.find(link => link.id === args.id);
+    }
+  },
+  Mutation: {
+    // fake a mutation, just push to the in memory list for now as we don't haev a db
+    post: (parent, args) => {
+      const link = {
+        id: `link-${idCount++}`,
+        description: args.description,
+        url: args.url
+      };
+      links.push(link);
+      return link;
+    },
+
+    updateLink: (parent, args) => {
+      const linkToUpdate = links.find(link => link.id === args.id);
+      const updatedLink = { ...args };
+      const newLinks = links.filter(link => link.id !== args.id);
+      links = newLinks.concat(updatedLink);
+      return updatedLink;
+    },
+
+    deleteLink: (parent, args) => {
+      const linkToDelete = links.find(link => link.id === args.id);
+      links = links.filter(link => link.id !== args.id);
+      return linkToDelete;
+    }
   }
 };
 
 const server = new GraphQLServer({
-  typeDefs,
+  typeDefs: "./src/schema.graphql",
   resolvers
 });
 

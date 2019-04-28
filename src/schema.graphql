@@ -1,0 +1,30 @@
+# // Here we define our GQL schema...
+# // We define a simple type of query with a field of info, that is
+# // a required string
+
+# // The schema is the heart of a gql server, required before you
+# // can build out the server
+
+# // Query is a `root type` along with `mutation` and `subscription`
+# // Think of these root types as entry points; you can only send a gql DB/server
+# // One of these three types
+
+# // Schemas have a *definition* and an *implementation*
+
+type Query {
+  info: String!
+  feed: [Link!]!
+  link(id: ID!): Link
+}
+
+type Mutation {
+  post(url: String!, description: String!): Link!
+  updateLink(id: ID!, url: String, description: String): Link
+  deleteLink(id: ID!): Link
+}
+
+type Link {
+  id: ID!
+  description: String!
+  url: String!
+}
