@@ -1,0 +1,10 @@
+#endpoint: ""
+endpoint: https://eu1.prisma.sh/andrew-fritz-ef1304/graphql_tutorial/dev
+
+# Points to the file that contains your datamodel
+datamodel: datamodel.prisma
+
+# Specifies language & location for the generated Prisma client
+generate:
+  - generator: javascript-client
+    output: ../src/generated/prisma-client
