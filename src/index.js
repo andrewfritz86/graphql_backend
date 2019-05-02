@@ -9,8 +9,8 @@ let links = [
   },
   {
     id: "link-1",
-    url: "www.krap",
-    description: "JHello!"
+    url: "www.test.net",
+    description: "YOYO!"
   }
 ];
 

@@ -69,10 +69,3 @@ The article lists the potential pitfalls of using raw SQL queries or ORMs to res
 
 The Prisma client will take care of most simple resolvers automatically, just by reading the schema. The yoga server can implement custom logic alongside the Prisma resolvers.
 
-1. Create prisma directory and files
-   - The YAML file is a config file
-   - The datamodel file defines the models Prisma will use as maps to the tables within the DB itself.
-   - Writing out the data model here, you'll notice that the types within the file map very closely to those already defined in the yoga server. It's important to understand that the yoga server simply defines an API for given types of Queries, but doesn't actually write data anywhere.
-2. Follow the instructions to create a demo Prisma database, hosted by Prisma.
-3. Generate the Prism Client.
-   - The Prisma Client directory will be written to the path specified in your YAML file. If you look through the prisma-schema.js file, you'll see that there are a plethora of queries and mutations written for you (alongside a ton of other stuff). The idea here is that Prisma looks at your datamodel, and generates all the mutations/queries that you _theoretically_ would want.
