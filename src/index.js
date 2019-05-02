@@ -29,7 +29,7 @@ const resolvers = {
     }
   },
   Mutation: {
-    // fake a mutation, just push to the in memory list for now as we don't haev a db
+    // fake a mutation, just push to the in memory list for now as we don't have a db
     post: (parent, args) => {
       const link = {
         id: `link-${idCount++}`,

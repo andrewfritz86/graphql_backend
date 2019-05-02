@@ -1,3 +1,28 @@
+# GraphQL intro
+- [Solid intro article](https://medium.freecodecamp.org/so-whats-this-graphql-thing-i-keep-hearing-about-baf4d36c20cf)
+- GraphQL versus REST
+  [article](https://www.howtographql.com/basics/1-graphql-is-the-better-rest/)
+  - 1 smart endpoint versus multiple dumb endpoints
+  - Solves N + 1 problems
+  - No overfetching of data
+  - Schema-driven development
+  - Strongly typed
+- Downsides
+  - Large overhead for simpler APIs
+  - "More moving parts", moving spec
+  - Potential caching issues
+    - Browsers easily cache URLs, but gql queries are all POSTs
+- GraphQL terminology
+  - Schema
+    - Defines the API. Any unique types are defined here, alongside the queries and mutations needed to access data.
+  - Queries
+    - Queries are what you would assume - you send specific queries to request data form the server.
+  - Mutations
+    - These are a type of query that can mutate/delete data.
+  - Resolvers
+    - These are functions invoked by queries and mutations. These functions contain the logic to respond to the requests to the API.
+
+
 # GraphQL backend
 
 ## Components
